@@ -23,7 +23,7 @@ hdr_date = datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S') + ' UTC'
 
 data_to_sign = (hdr_date + ':' + request_id + ':' + uri + ':' + app_key)
 b64d = base64.base64decode(secret_key)
-hmac_sha1 = hmac.new(bd64, data_to_sign.encode(), digestmod=hashlib.sha1)
+hmac_sha1 = hmac.new(b64d, data_to_sign.encode(), digestmod=hashlib.sha1)
 hmac_sha1 = hmac_sha1.digest()
 
 signature = str(base64.b64encode(hmac_sha1))
